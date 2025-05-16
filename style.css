@@ -1,54 +1,40 @@
-/* styles.css */
-
-/* 1) Importar fuentes de Google (pon esto arriba si usas Google Fonts) */
-/* @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@400;600&display=swap'); */
-
-/* 2) Reset y box-sizing */
+/* Reset & variables */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* 3) Variables de color y tipografía */
 :root {
-  --color-bg: #f5f5f5;
-  --color-header-from: #0052d4;
-  --color-header-to: #4364f7;
-  --color-card: #ffffff;
-  --color-text: #333333;
-  --color-accent: #0052d4;
+  --bg: #f5f5f5;
+  --header-from: #0052d4;
+  --header-to: #4364f7;
+  --card-bg: #fff;
+  --text: #333;
+  --accent: #0052d4;
   --radius: 8px;
   --font-sans: 'Montserrat', sans-serif;
   --font-serif: 'Merriweather', serif;
 }
 
-/* 4) Estilos globales */
 body {
   font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
 }
 
-/* 5) Header con degradado y layout flex */
+/* Header */
 .site-header {
-  background: linear-gradient(
-    135deg,
-    var(--color-header-from),
-    var(--color-header-to)
-  );
+  background: linear-gradient(135deg, var(--header-from), var(--header-to));
   padding: 2rem 1rem;
 }
-
 .header-content {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
 }
-
-/* 6) Avatar redondo */
 .avatar {
   width: 80px;
   height: 80px;
@@ -56,52 +42,49 @@ body {
   object-fit: cover;
   border: 3px solid #fff;
 }
-
-/* 7) Título y subtítulo */
 .site-header h1 {
   font-family: var(--font-serif);
   font-size: 1.8rem;
   color: #fff;
 }
-
 .tagline {
-  font-family: var(--font-sans);
   font-weight: 600;
-  color: #eef3fc;
+  color: rgba(238, 243, 252, 0.9);
   margin-top: 0.25rem;
 }
 
-/* 8) Secciones estilo “card” */
+/* Sections */
 section {
   max-width: 800px;
   margin: 2rem auto;
-  background: var(--color-card);
+  background: var(--card-bg);
   padding: 1.5rem;
   border-radius: var(--radius);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 section h2 {
   font-family: var(--font-serif);
-  color: var(--color-accent);
-  margin-bottom: 0.5rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
 }
 
-/* 9) Listas y enlaces */
+/* Listas con emojis */
 section ul {
-  list-style: disc inside;
-  margin-left: 1rem;
+  list-style: none;
 }
-
-a {
-  color: var(--color-accent);
+section ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+section ul li a {
+  color: var(--accent);
   text-decoration: none;
 }
-a:hover {
+section ul li a:hover {
   text-decoration: underline;
 }
 
-/* 10) Responsive */
+/* Responsive */
 @media (max-width: 600px) {
   .header-content {
     flex-direction: column;
@@ -109,5 +92,8 @@ a:hover {
   section {
     margin: 1rem;
     padding: 1rem;
+  }
+  section ul li {
+    font-size: 0.95rem;
   }
 }
