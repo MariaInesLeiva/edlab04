@@ -1,69 +1,113 @@
-/* 1) Reset básico, tipografía y fondo fijo */
-body {
-  font-family: Arial, sans-serif;
+/* styles.css */
+
+/* 1) Importar fuentes de Google (pon esto arriba si usas Google Fonts) */
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@400;600&display=swap'); */
+
+/* 2) Reset y box-sizing */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
 
-  /* Fondo fijo: cambia 'fondo.jpg' por tu propia imagen o reemplázalo por un color */
-  background: url('fondo.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
+/* 3) Variables de color y tipografía */
+:root {
+  --color-bg: #f5f5f5;
+  --color-header-from: #0052d4;
+  --color-header-to: #4364f7;
+  --color-card: #ffffff;
+  --color-text: #333333;
+  --color-accent: #0052d4;
+  --radius: 8px;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Merriweather', serif;
+}
+
+/* 4) Estilos globales */
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
-/* 2) Espaciado para header y secciones */
-header,
+/* 5) Header con degradado y layout flex */
+.site-header {
+  background: linear-gradient(
+    135deg,
+    var(--color-header-from),
+    var(--color-header-to)
+  );
+  padding: 2rem 1rem;
+}
+
+.header-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 6) Avatar redondo */
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+/* 7) Título y subtítulo */
+.site-header h1 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.tagline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: #eef3fc;
+  margin-top: 0.25rem;
+}
+
+/* 8) Secciones estilo “card” */
 section {
-  padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
+  background: var(--color-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 3) Encabezado semitransparente para que se vea el fondo */
-header {
-  background: rgba(0, 0, 0, 0.5);
-  text-align: center;
+section h2 {
+  font-family: var(--font-serif);
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
 }
 
-/* 4) Responsive: letra más pequeña en pantallas <600px */
+/* 9) Listas y enlaces */
+section ul {
+  list-style: disc inside;
+  margin-left: 1rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* 10) Responsive */
 @media (max-width: 600px) {
-  body {
-    font-size: 14px;
+  .header-content {
+    flex-direction: column;
   }
-}
-
-/* 5) Preparar las letras para animar */
-#nombre .letra {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(-50px);
-  animation: pop 0.5s ease-out forwards;
-}
-
-/* 6) Retrasos escalonados según posición */
-#nombre .letra:nth-child(1)  { animation-delay: 0.1s; }
-#nombre .letra:nth-child(2)  { animation-delay: 0.2s; }
-#nombre .letra:nth-child(3)  { animation-delay: 0.3s; }
-#nombre .letra:nth-child(4)  { animation-delay: 0.4s; }
-#nombre .letra:nth-child(5)  { animation-delay: 0.5s; }
-
-#nombre .letra:nth-child(6)  { animation-delay: 0.6s; }
-#nombre .letra:nth-child(7)  { animation-delay: 0.7s; }
-#nombre .letra:nth-child(8)  { animation-delay: 0.8s; }
-#nombre .letra:nth-child(9)  { animation-delay: 0.9s; }
-
-#nombre .letra:nth-child(10) { animation-delay: 1.0s; }
-#nombre .letra:nth-child(11) { animation-delay: 1.1s; }
-#nombre .letra:nth-child(12) { animation-delay: 1.2s; }
-#nombre .letra:nth-child(13) { animation-delay: 1.3s; }
-#nombre .letra:nth-child(14) { animation-delay: 1.4s; }
-
-/* 7) Keyframes para el “pop” */
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  section {
+    margin: 1rem;
+    padding: 1rem;
   }
 }
